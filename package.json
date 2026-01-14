@@ -23,7 +23,7 @@
     "commands": [
       {
         "command": "ts-runner.run",
-        "title": "Run TypeScript with Watch",
+        "title": "Run TypeScript",
         "icon": "$(play)"
       }
     ],
