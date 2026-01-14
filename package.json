@@ -1,0 +1,54 @@
+{
+  "name": "ts-runner",
+  "displayName": "TS Runner",
+  "description": "Run TypeScript files with a click - executes node file.ts --watch",
+  "version": "1.0.0",
+  "publisher": "iaco",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iaco-io/ts-runner"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ts-runner.run",
+        "title": "Run TypeScript with Watch",
+        "icon": "$(play)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "ts-runner.run",
+          "when": "resourceLangId == typescript || resourceLangId == typescriptreact",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.0.0",
+    "typescript": "^4.7.0",
+    "esbuild": "^0.13.0"
+  }
+}
